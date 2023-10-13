@@ -1,3 +1,6 @@
+-- v0.01 - New Additions:
+--                 PL-5EII, PL-8A/B, PL-12, LS-6, GB-6, C-802... basically all the JF17 stuff.
+
 local years = {}
 
 -- Define weapons by years. NOTE: mostly taken from the spreadsheet at https://docs.google.com/spreadsheets/d/1BiEo_eFfMrbD9oOLe8ddIVboQ2QvdgDvd3vazxK2PU0/ but with
@@ -112,7 +115,7 @@ years[1983] = {
     "weapons.missiles.CATM_9M",
     "weapons.missiles.P_27TE"
 }
-years[1984] = { "weapons.missiles.P_73" }
+years[1984] = { "weapons.missiles.P_73", "weapons.missiles.PL-8B" }
 years[1985] = {
     "weapons.missiles.AGM_65E",
     "weapons.missiles.AGM_88",
@@ -139,7 +142,7 @@ years[1992] = {
     "weapons.missiles.BK90_MJ2"
 }
 years[1993] = { "weapons.missiles.AGM_114K" }
-years[1994] = { "weapons.missiles.AIM_120", "weapons.missiles.P_77" }
+years[1994] = { "weapons.missiles.AIM_120", "weapons.missiles.P_77", "weapons.missiles.PL-8A" }
 years[1995] = { "weapons.missiles.AGM_114" }
 years[1996] = { "weapons.missiles.AIM_120C", "weapons.bombs.GBU_27" }
 years[1997] = { "weapons.bombs.CBU_103" }
@@ -173,11 +176,23 @@ As far as I can tell there's no string name that refers to it, but the Warehouse
 
 years[2000] = { "weapons.missiles.AGM_84H" }
 years[2003] = { "weapons.missiles.AIM_9X" }
-years[2005] = { "weapons.missiles.AGM_154", "weapons.missiles.AGM_154B" }
+years[2005] = { "weapons.missiles.AGM_154", "weapons.missiles.AGM_154B", "weapons.missiles.PL-12" }
+years[2006] = { "weapons.missiles.LS-6-250", "weapons.missiles.LS-6-500", "weapons.bombs.LS-6-100", "weapons.missiles.C-802AK", "weapons.missiles.C_802AK" }
 years[2007] = { "weapons.missiles.AGM_65H", "weapons.missiles.AGM_65K" }
+years[2008] = { "weapons.missiles.PL-5EII", "weapons.containers.pl5eii" }
 years[2009] = { "weapons.adapters.BRU_55", "weapons.adapters.BRU_57" }
-years[2012] = { "weapons.bombs.GBU_54_V_1B", "weapons.missiles.AGM_65L" }
+years[2012] = { "weapons.bombs.GBU_54_V_1B",
+                "weapons.missiles.AGM_65L",
+                "weapons.missiles.GB-6-SFW", 
+                "weapons.missiles.GB-6",
+                "weapons.missiles.GB-6-HE",
+                "weapons.missiles.CM-802AKG_AI",
+                "weapons.missiles.CM_802AKG",
+                "weapons.missiles.CM-802AKG",
+                "weapons.missiles.LD-10" }
+years[2014] = { "weapons.missiles.mar1" }
 years[2015] = { "weapons.missiles.AGR_20A", "weapons.missiles.AGR_20_M282" }
+years[2022] = { "weapons.missiles.A-Darter IR AAM" }
 
 
 -- Commenting out airports to check the automatic collection of airbases works.
