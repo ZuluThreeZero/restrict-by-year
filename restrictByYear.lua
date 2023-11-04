@@ -6,7 +6,25 @@
 --v0.03 - New Additions:
 --                 HTS, ATFLIR, AIM-7M, AIM-7P,
 --        Fixed: RB 15F, AIM-7MH
-
+--[[v0.04 TODO Add the following weapons:
+aim-7m (still broken)
+talds adm-141A&B
+suu-25 x 8 LUU-2 - Target marker flares
+mica-ir and mica-rf
+aim54c(mk60)
+agm-84a harpoon
+agm-64D
+agm-65B
+rb-75b
+gbu-15(v)31/B
+alq131
+alq184
+AN/AAQ-13 and AN/AAQ-14 (f-15 litening target pod and navflir I believe)
+rb 24 and rb 24j (aim-9b aim-9p3)
+rb 75b
+LANTIRN TARGETING POD (14a)
+]]
+local myAmmoQty = 333
 local years = {}
 
 -- Define weapons by years. NOTE: mostly taken from the spreadsheet at https://docs.google.com/spreadsheets/d/1BiEo_eFfMrbD9oOLe8ddIVboQ2QvdgDvd3vazxK2PU0/ but with
@@ -545,7 +563,29 @@ function restrictWeps(yearToCheck, years)
         end
     end
 end
+--[[ This is the updated function that would avoid having to
+zero out things manually in the warehouses file with the caveat
+that you would need another lua file to set all items to 0 on mission
+start and uncheck unlimited munitions in the mission editor
 
+function restrictWeps(yearToCheck, years)
+    local airbases = world.getAirbases()
+    for _, airbase in pairs(airbases) do
+        local w = airbase:getWarehouse()
+        for year, items in pairs(years) do
+            if year > yearToCheck.y then
+                for _, item in ipairs(items) do
+                    w:setItem(item, 0)
+                end
+            else
+                for _, item in ipairs(items) do
+                    w:setItem(item, myAmmoQty)
+                end
+            end
+        end
+    end
+end
+]]
 local yearToCheck = mist.time.getDate()
 
 -- Call the function to restrict items based on the yearToCheck for all airbases.
