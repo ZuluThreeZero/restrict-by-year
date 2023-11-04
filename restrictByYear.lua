@@ -1,5 +1,7 @@
--- v0.01 - New Additions:
---                 PL-5EII, PL-8A/B, PL-12, LS-6, GB-6, C-802... basically all the JF17 stuff.
+-- v0.02 - New Additions:
+--                 Vikhr, Kh-29L/T, Kh-58, Kh-35, Kh-25MR/ML, Kh-31A/P, Kh-41, Kh-22, Kh-59M, Kh-65.
+-- Alterations:
+--                    Removal of duplicated AGM-84D 1977 and 1983.
 
 local years = {}
 
@@ -25,6 +27,7 @@ years[1957] = { "weapons.nurs.Zuni_127" }
 years[1962] = {
     "weapons.missiles.R-3S",
     "weapons.missiles.R_530F_EM",
+    "weapons.missiles.X_22",
     "weapons.missiles.R_530F_IR"
 }
 years[1963] = { "weapons.missiles.AGM_45", "weapons.missiles.AGM_45A", "weapons.bombs.AGM_62" }
@@ -55,7 +58,7 @@ years[1972] = {
     "weapons.missiles.AIM-9JULI",
     "weapons.missiles.Rb 05A"
 }
-years[1973] = { "weapons.bombs.CBU_52B" }
+years[1973] = { "weapons.bombs.CBU_52B", "weapons.missiles.X_28" }
 years[1974] = {
     "weapons.missiles.AIM_54A_Mk47",
     "weapons.missiles.AIM_54A_Mk60",
@@ -71,6 +74,7 @@ years[1975] = {
     "weapons.missiles.RB75",
     "weapons.missiles.RB75T",
     "weapons.nurs.S-25-O",
+    "weapons.missiles.X_25MR",
     "weapons.nurs.C_25"
 }
 years[1976] = {
@@ -93,11 +97,17 @@ years[1978] = {
     "weapons.missiles.AIM-9P5",
     "weapons.bombs.BELOUGA",
     "weapons.bombs.BLG66",
+    "weapons.missiles.X_25ML",
+    "weapons.missiles.X_25MP",
     "weapons.bombs.BLG66_BELOUGA"
 }
 years[1979] = {
     "weapons.missiles.S_25L",
     "weapons.missiles.Super_530F"
+}
+years[1980] = {
+    "weapons.missiles.X_29L",
+    "weapons.missiles.X_29T"
 }
 years[1981] = {
     "weapons.missiles.P_33E",
@@ -105,7 +115,6 @@ years[1981] = {
 }
 years[1982] = { "weapons.missiles.AIM-7MH" }
 years[1983] = {
-    "weapons.missiles.AGM_84D",
     "weapons.bombs.GBU_24",
     "weapons.missiles.P_27P",
     "weapons.missiles.P_27PE",
@@ -115,11 +124,13 @@ years[1983] = {
     "weapons.missiles.CATM_9M",
     "weapons.missiles.P_27TE"
 }
-years[1984] = { "weapons.missiles.P_73", "weapons.missiles.PL-8B" }
+years[1984] = { "weapons.missiles.P_73", "weapons.missiles.PL-8B", "weapons.missiles.X_41" }
 years[1985] = {
     "weapons.missiles.AGM_65E",
     "weapons.missiles.AGM_88",
+    "weapons.missiles.Vikhr_M",
     "weapons.missiles.Rb 15F",
+    "weapons.missiles.X_58",
     "weapons.missiles.Rb 15F (for A.I.)"
 }
 years[1986] = {
@@ -131,14 +142,16 @@ years[1986] = {
 }
 years[1988] = {
     "weapons.missiles.AGM_65G",
+    "weapons.missiles.X_31P",
     "weapons.missiles.Super_530D"
 }
-years[1989] = { "weapons.containers.alq-184long" }
+years[1989] = { "weapons.containers.alq-184long", "weapons.missiles.X_31A" }
 years[1990] = { "weapons.missiles.AGM_84E" }
-years[1991] = { "weapons.bombs.GBU_27", "weapons.bombs.GBU_28", "weapons.missiles.AGM_65F" }
+years[1991] = { "weapons.bombs.GBU_27", "weapons.bombs.GBU_28", "weapons.missiles.AGM_65F", "weapons.missiles.X_59M" }
 years[1992] = {
     "weapons.missiles.BK90_MJ1",
     "weapons.missiles.BK90_MJ1_MJ2",
+    "weapons.missiles.X_65",
     "weapons.missiles.BK90_MJ2"
 }
 years[1993] = { "weapons.missiles.AGM_114K" }
@@ -176,7 +189,7 @@ As far as I can tell there's no string name that refers to it, but the Warehouse
 
 years[2000] = { "weapons.missiles.AGM_84H" }
 years[2003] = { "weapons.missiles.AIM_9X" }
-years[2005] = { "weapons.missiles.AGM_154", "weapons.missiles.AGM_154B", "weapons.missiles.PL-12" }
+years[2005] = { "weapons.missiles.AGM_154", "weapons.missiles.AGM_154B", "weapons.missiles.PL-12", "weapons.missiles.X_35" }
 years[2006] = { "weapons.missiles.LS-6-250", "weapons.missiles.LS-6-500", "weapons.bombs.LS-6-100", "weapons.missiles.C-802AK", "weapons.missiles.C_802AK" }
 years[2007] = { "weapons.missiles.AGM_65H", "weapons.missiles.AGM_65K" }
 years[2008] = { "weapons.missiles.PL-5EII", "weapons.containers.pl5eii" }
