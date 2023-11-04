@@ -3,6 +3,10 @@
 -- Alterations:
 --                    Removal of duplicated AGM-84D 1977 and 1983.
 
+--v0.03 - New Additions:
+--                 HTS, ATFLIR, AIM-7M, AIM-7P,
+--        Fixed: RB 15F, AIM-7MH
+
 local years = {}
 
 -- Define weapons by years. NOTE: mostly taken from the spreadsheet at https://docs.google.com/spreadsheets/d/1BiEo_eFfMrbD9oOLe8ddIVboQ2QvdgDvd3vazxK2PU0/ but with
@@ -113,7 +117,7 @@ years[1981] = {
     "weapons.missiles.P_33E",
     "weapons.adapters.BRU_33A"
 }
-years[1982] = { "weapons.missiles.AIM-7MH" }
+years[1982] = { "weapons.missiles.AIM-7M" }
 years[1983] = {
     "weapons.bombs.GBU_24",
     "weapons.missiles.P_27P",
@@ -129,9 +133,7 @@ years[1985] = {
     "weapons.missiles.AGM_65E",
     "weapons.missiles.AGM_88",
     "weapons.missiles.Vikhr_M",
-    "weapons.missiles.Rb 15F",
-    "weapons.missiles.X_58",
-    "weapons.missiles.Rb 15F (for A.I.)"
+    "weapons.missiles.X_58"
 }
 years[1986] = {
     "weapons.missiles.AIM_54C_Mk47",
@@ -140,12 +142,13 @@ years[1986] = {
     "weapons.missiles.AGM_122",
     "weapons.missiles.MMagicII"
 }
+years[1987] = { "weapons.missiles.AIM-7MH", "weapons.missiles.AIM-7P"  }
 years[1988] = {
     "weapons.missiles.AGM_65G",
     "weapons.missiles.X_31P",
     "weapons.missiles.Super_530D"
 }
-years[1989] = { "weapons.containers.alq-184long", "weapons.missiles.X_31A" }
+years[1989] = { "weapons.containers.alq-184long", "weapons.missiles.X_31A", "weapons.missiles.Rb 15F", "weapons.missiles.Rb 15F (for A.I.)" }
 years[1990] = { "weapons.missiles.AGM_84E" }
 years[1991] = { "weapons.bombs.GBU_27", "weapons.bombs.GBU_28", "weapons.missiles.AGM_65F", "weapons.missiles.X_59M" }
 years[1992] = {
@@ -188,9 +191,10 @@ As far as I can tell there's no string name that refers to it, but the Warehouse
 ]]
 
 years[2000] = { "weapons.missiles.AGM_84H" }
+years[2002] = { "weapons.containers.AN_ASQ_228" }
 years[2003] = { "weapons.missiles.AIM_9X" }
 years[2005] = { "weapons.missiles.AGM_154", "weapons.missiles.AGM_154B", "weapons.missiles.PL-12", "weapons.missiles.X_35" }
-years[2006] = { "weapons.missiles.LS-6-250", "weapons.missiles.LS-6-500", "weapons.bombs.LS-6-100", "weapons.missiles.C-802AK", "weapons.missiles.C_802AK" }
+years[2006] = { "weapons.missiles.LS-6-250", "weapons.missiles.LS-6-500", "weapons.bombs.LS-6-100", "weapons.missiles.C-802AK", "weapons.missiles.C_802AK", "weapons.containers.16c_hts_pod" }
 years[2007] = { "weapons.missiles.AGM_65H", "weapons.missiles.AGM_65K" }
 years[2008] = { "weapons.missiles.PL-5EII", "weapons.containers.pl5eii" }
 years[2009] = { "weapons.adapters.BRU_55", "weapons.adapters.BRU_57" }
