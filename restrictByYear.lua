@@ -6,24 +6,28 @@
 --v0.03 - New Additions:
 --                 HTS, ATFLIR, AIM-7M, AIM-7P,
 --        Fixed: RB 15F, AIM-7MH
---[[v0.04 TODO Add the following weapons:
-aim-7m (still broken)
-talds adm-141A&B
-suu-25 x 8 LUU-2 - Target marker flares
-mica-ir and mica-rf
+--[[
+    v0.04
+
+Switch to Eclipse function version, removing need for separate setFinite Lua. Does require setting warehouses to finite numbers in ME or through editing warehouse file.
+
+Add the following weapons as highlighted by Eclipse / Druss99:
+AIM-7M using wsType {4,4,7,21},
+TALDS ADM-141A and B
+LUU-2 - Target marker flares
+MICA IR and RF
 aim54c(mk60)
-agm-84a harpoon
-agm-64D
-agm-65B
-rb-75b
+agm-84a harpoon (AGM-84D corrected to later date)
+agm-65B 
+rb-75b 
 gbu-15(v)31/B
-alq131
-alq184
-AN/AAQ-13 and AN/AAQ-14 (f-15 litening target pod and navflir I believe)
+alq131 using wsType {4,15,45,25},
+alq184 using wsType {4,15,45,142},
+AN/AAQ-13 and AN/AAQ-14 for F-15E
 rb 24 and rb 24j (aim-9b aim-9p3)
-rb 75b
 LANTIRN TARGETING POD (14a)
 ]]
+
 local myAmmoQty = 333
 local years = {}
 
@@ -44,7 +48,7 @@ years[1950] = {
     "weapons.nurs.HYDRA_70_M257",
     "weapons.bombs.M_117"
 }
-years[1956] = { "weapons.missiles.AIM_9" }
+years[1955] = { "weapons.missiles.AIM_9", "weapons.missiles.Rb 24", "weapons.missiles.Rb 24J" }
 years[1957] = { "weapons.nurs.Zuni_127" }
 years[1962] = {
     "weapons.missiles.R-3S",
@@ -62,7 +66,7 @@ years[1964] = {
     "weapons.bombs.Mk_83CT"
 }
 years[1966] = { "weapons.missiles.R-3R" }
-years[1968] = { "weapons.bombs.ROCKEYE" }
+years[1968] = { "weapons.bombs.ROCKEYE", "weapons.bombs.LUU_2B" }
 years[1969] = { "weapons.missiles.AIM-7E-2" }
 years[1970] = {
     "weapons.containers.AV8BNA_ALQ164",
@@ -109,7 +113,9 @@ years[1976] = {
     "weapons.missiles.R_550_M1"
 }
 years[1977] = {
-    "weapons.missiles.AGM_84D",
+    "weapons.missiles.AGM_84A",
+    "weapons.missiles.RB75B", -- Guesstimate based on "development of the AGM-65B "Scene Magnified" version began in 1975 before it was delivered during the late 1970s. When production of the AGM-65A/B was ended in 1978"
+    "weapons.missiles.AGM_65B",
     "weapons.missiles.AIM-9L",
     "weapons.missiles.Rb 74",
     "weapons.bombs.Durandal"
@@ -125,6 +131,7 @@ years[1978] = {
 }
 years[1979] = {
     "weapons.missiles.S_25L",
+    {4,15,45,25}, -- AN/ALQ-131
     "weapons.missiles.Super_530F"
 }
 years[1980] = {
@@ -135,9 +142,10 @@ years[1981] = {
     "weapons.missiles.P_33E",
     "weapons.adapters.BRU_33A"
 }
-years[1982] = { "weapons.missiles.AIM-7M" }
+years[1982] = { "weapons.missiles.AIM-7M", {4,4,7,21} } -- wsType of AIM-7M, hopefully fixes.
 years[1983] = {
     "weapons.bombs.GBU_24",
+    "weapons.bombs.GBU_15_V_31_B",
     "weapons.missiles.P_27P",
     "weapons.missiles.P_27PE",
     "weapons.missiles.AGM_65D",
@@ -151,22 +159,37 @@ years[1985] = {
     "weapons.missiles.AGM_65E",
     "weapons.missiles.AGM_88",
     "weapons.missiles.Vikhr_M",
+    "weapons.missiles.AGM_84D",
     "weapons.missiles.X_58"
 }
 years[1986] = {
     "weapons.missiles.AIM_54C_Mk47",
+    "weapons.missiles.AIM_54C_Mk60",
     "weapons.bombs.CBU_87",
     "weapons.bombs.CBU_99",
     "weapons.missiles.AGM_122",
     "weapons.missiles.MMagicII"
 }
-years[1987] = { "weapons.missiles.AIM-7MH", "weapons.missiles.AIM-7P"  }
+years[1987] = {
+    "weapons.missiles.AIM-7MH",
+    "weapons.missiles.AIM-7P",
+    "weapons.missiles.ADM_141A",
+    "weapons.missiles.ADM_141B",
+    "weapons.containers.F-15E_AAQ-14_LANTIRN",
+    "weapons.containers.F-15E_AAQ-13_LANTIRN"
+}
 years[1988] = {
     "weapons.missiles.AGM_65G",
     "weapons.missiles.X_31P",
     "weapons.missiles.Super_530D"
 }
-years[1989] = { "weapons.containers.alq-184long", "weapons.missiles.X_31A", "weapons.missiles.Rb 15F", "weapons.missiles.Rb 15F (for A.I.)" }
+years[1989] = {
+    "weapons.containers.alq-184long",
+    {4,15,45,142}, -- ALQ-184 Short
+    "weapons.missiles.X_31A",
+    "weapons.missiles.Rb 15F",
+    "weapons.missiles.Rb 15F (for A.I.)"
+}
 years[1990] = { "weapons.missiles.AGM_84E" }
 years[1991] = { "weapons.bombs.GBU_27", "weapons.bombs.GBU_28", "weapons.missiles.AGM_65F", "weapons.missiles.X_59M" }
 years[1992] = {
@@ -178,7 +201,7 @@ years[1992] = {
 years[1993] = { "weapons.missiles.AGM_114K" }
 years[1994] = { "weapons.missiles.AIM_120", "weapons.missiles.P_77", "weapons.missiles.PL-8A" }
 years[1995] = { "weapons.missiles.AGM_114" }
-years[1996] = { "weapons.missiles.AIM_120C", "weapons.bombs.GBU_27" }
+years[1996] = { "weapons.missiles.AIM_120C", "weapons.bombs.GBU_27", "weapons.missiles.MICA_R", "weapons.missiles.MICA_T", "weapons.containers.{F14-LANTIRN-TP}" }
 years[1997] = { "weapons.bombs.CBU_103" }
 years[1998] = { "weapons.missiles.AGM_154A", "weapons.bombs.CBU_97", "weapons.bombs.CBU_105" }
 years[1999] = {
@@ -550,7 +573,7 @@ local airbaseTables = {
 
 ]]
 
-function restrictWeps(yearToCheck, years)
+--[[function restrictWeps(yearToCheck, years)
     local airbases = world.getAirbases()
     for _, airbase in pairs(airbases) do
         local w = airbase:getWarehouse()
@@ -562,11 +585,12 @@ function restrictWeps(yearToCheck, years)
             end
         end
     end
-end
+end]]
+
 --[[ This is the updated function that would avoid having to
 zero out things manually in the warehouses file with the caveat
 that you would need another lua file to set all items to 0 on mission
-start and uncheck unlimited munitions in the mission editor
+start and uncheck unlimited munitions in the mission editor]]
 
 function restrictWeps(yearToCheck, years)
     local airbases = world.getAirbases()
@@ -585,7 +609,7 @@ function restrictWeps(yearToCheck, years)
         end
     end
 end
-]]
+
 local yearToCheck = mist.time.getDate()
 
 -- Call the function to restrict items based on the yearToCheck for all airbases.
