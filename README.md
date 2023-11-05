@@ -15,6 +15,8 @@ Save your mission.
 
 **Ensuring All Warehouses Are Limited By Editing the Warehouses File**
 
+*NOTE: thanks to Druss99, this may be changing in v0.04, stay tuned.*
+
 Go to the folder where your mission is saved, and open up the .miz in 7zip or equivalent.
 
 In the root folder in 7zip, click on the “warehouses” file and drag it out into the folder.
