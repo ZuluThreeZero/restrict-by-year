@@ -26,8 +26,10 @@ Possible quantities you will see:
 
 **References**
 
-The initial announcement post on the ED forums: https://forum.dcs.world/topic/332300-warehouse-control-functions/
+[Unified Warehouse Reference Sheet (please make additions!](https://docs.google.com/spreadsheets/d/14RepXgWXgGJ6TYhmRZtVO64NaeMSxR2j/edit?gid=2101541036#gid=2101541036)
 
-The entry for warehouses on the Hoggit Wiki: https://wiki.hoggitworld.com/view/DCS_Class_Warehouse
+[Warehousing Update Post - ED Forums](https://forum.dcs.world/topic/332300-warehouse-control-functions/)
 
-The community-made sheet I pulled most of the initial dates from: https://docs.google.com/spreadsheets/d/1BiEo_eFfMrbD9oOLe8ddIVboQ2QvdgDvd3vazxK2PU0
+[Warehouse Class - Hoggit Wiki](https://wiki.hoggitworld.com/view/DCS_Class_Warehouse)
+
+[Weapons Data Sheet](https://docs.google.com/spreadsheets/d/1BiEo_eFfMrbD9oOLe8ddIVboQ2QvdgDvd3vazxK2PU0)
