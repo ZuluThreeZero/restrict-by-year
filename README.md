@@ -26,7 +26,7 @@ Possible quantities you will see:
 
 **References**
 
-[Unified Warehouse Reference Sheet (please make additions!](https://docs.google.com/spreadsheets/d/14RepXgWXgGJ6TYhmRZtVO64NaeMSxR2j/edit?gid=2101541036#gid=2101541036)
+[Unified Warehouse Reference Sheet (please make additions!)](https://docs.google.com/spreadsheets/d/14RepXgWXgGJ6TYhmRZtVO64NaeMSxR2j/edit?gid=2101541036#gid=2101541036)
 
 [Warehousing Update Post - ED Forums](https://forum.dcs.world/topic/332300-warehouse-control-functions/)
 
