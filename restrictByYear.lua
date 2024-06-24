@@ -9,25 +9,38 @@
 --[[
     v0.04
 
-Switch to Eclipse function version, removing need for separate setFinite Lua. Does require setting warehouses to finite numbers in ME or through editing warehouse file.
+    Switch to Eclipse function version, removing need for separate setFinite Lua. Does require setting warehouses to finite numbers in ME or through editing warehouse file.
 
-Add the following weapons as highlighted by Eclipse / Druss99:
-AIM-7M using wsType {4,4,7,21},
-TALDS ADM-141A and B
-LUU-2 - Target marker flares
-MICA IR and RF
-aim54c(mk60)
-agm-84a harpoon (AGM-84D corrected to later date)
-agm-65B 
-rb-75b 
-gbu-15(v)31/B
-alq131 using wsType {4,15,45,25},
-alq184 using wsType {4,15,45,142},
-AN/AAQ-13 and AN/AAQ-14 for F-15E
-rb 24 and rb 24j (aim-9b aim-9p3)
-LANTIRN TARGETING POD (14a)
+    Add the following weapons as highlighted by Eclipse / Druss99:
+    AIM-7M using wsType {4,4,7,21},
+    TALDS ADM-141A and B
+    LUU-2 - Target marker flares
+    MICA IR and RF
+    aim54c(mk60)
+    agm-84a harpoon (AGM-84D corrected to later date)
+    agm-65B 
+    rb-75b 
+    gbu-15(v)31/B
+    alq131 using wsType {4,15,45,25},
+    alq184 using wsType {4,15,45,142},
+    AN/AAQ-13 and AN/AAQ-14 for F-15E
+    rb 24 and rb 24j (aim-9b aim-9p3)
+    LANTIRN TARGETING POD (14a)
 ]]
 
+--[[
+    v0.05 - TO DO LIST
+    Confirm which AIM-9 variant "weapons.missiles.AIM_9" refers to, as it is doubled in 1955 and 1983.
+]]
+
+--[[
+    v0.05 Changes
+    Added missing AIM-9 (AIM9, because obviously) variants - AIM-9B (GAR-8), AIM9L, AIM9M, AIM9X, Captive AIM-9M.
+    Corrected duplicated "weapons.missiles.AIM_9" which refers to the AIM-9M (1983), not just the AIM-9 (1955).
+    Corrected SD-10 to SD-10A (using its wsType), added BRM-1.
+    Added AN/APG-78 (AH-64D Radar), C-701T, S-8 rocket series, S-13.
+    Tweaked R-27 dates - 1986 for R and T, 1990 for ER and ET.
+]]
 local myAmmoQty = 333
 local years = {}
 
@@ -48,7 +61,7 @@ years[1950] = {
     "weapons.nurs.HYDRA_70_M257",
     "weapons.bombs.M_117"
 }
-years[1955] = { "weapons.missiles.AIM_9", "weapons.missiles.Rb 24", "weapons.missiles.Rb 24J" }
+years[1955] = { "weapons.missiles.Rb 24", "weapons.missiles.Rb 24J", {4,4,7,265} } -- AIM-9B / GAR-8 for F-86 Saber
 years[1957] = { "weapons.nurs.Zuni_127" }
 years[1962] = {
     "weapons.missiles.R-3S",
@@ -117,6 +130,7 @@ years[1977] = {
     "weapons.missiles.RB75B", -- Guesstimate based on "development of the AGM-65B "Scene Magnified" version began in 1975 before it was delivered during the late 1970s. When production of the AGM-65A/B was ended in 1978"
     "weapons.missiles.AGM_65B",
     "weapons.missiles.AIM-9L",
+    {4,4,7,424}, -- AIM9L (not AIM-9L)
     "weapons.missiles.Rb 74",
     "weapons.bombs.Durandal"
 }
@@ -146,15 +160,27 @@ years[1982] = { "weapons.missiles.AIM-7M", {4,4,7,21} } -- wsType of AIM-7M, hop
 years[1983] = {
     "weapons.bombs.GBU_24",
     "weapons.bombs.GBU_15_V_31_B",
-    "weapons.missiles.P_27P",
-    "weapons.missiles.P_27PE",
     "weapons.missiles.AGM_65D",
-    "weapons.missiles.P_27T",
     "weapons.missiles.AIM_9",
+    "weapons.nurs.C_13",
     "weapons.missiles.CATM_9M",
-    "weapons.missiles.P_27TE"
+    {4,4,7,437}, -- AIM9M (not AIM-9M)
+    {4,4,100,143} -- Captive AIM-9M
 }
-years[1984] = { "weapons.missiles.P_73", "weapons.missiles.PL-8B", "weapons.missiles.X_41" }
+years[1984] = { 
+    "weapons.missiles.P_73", 
+    "weapons.missiles.PL-8B", 
+    "weapons.nurs.C_8", 
+    "weapons.nurs.C_8CM", 
+    "weapons.nurs.C_8CM_BU", 
+    "weapons.nurs.C_8CM_GN",  
+    "weapons.nurs.C_8CM_RD",
+    "weapons.nurs.C_8CM_VT",
+    "weapons.nurs.C_8CM_WH",
+    "weapons.nurs.C_8CM_YE",
+    "weapons.nurs.C_8OFP2",
+    "weapons.nurs.C_8OM",
+    "weapons.missiles.X_41" }
 years[1985] = {
     "weapons.missiles.AGM_65E",
     "weapons.missiles.AGM_88",
@@ -163,6 +189,8 @@ years[1985] = {
     "weapons.missiles.X_58"
 }
 years[1986] = {
+    "weapons.missiles.P_27P",
+    "weapons.missiles.P_27T",
     "weapons.missiles.AIM_54C_Mk47",
     "weapons.missiles.AIM_54C_Mk60",
     "weapons.bombs.CBU_87",
@@ -190,7 +218,7 @@ years[1989] = {
     "weapons.missiles.Rb 15F",
     "weapons.missiles.Rb 15F (for A.I.)"
 }
-years[1990] = { "weapons.missiles.AGM_84E" }
+years[1990] = {     "weapons.missiles.P_27PE", "weapons.missiles.P_27TE", "weapons.missiles.AGM_84E" }
 years[1991] = { "weapons.bombs.GBU_27", "weapons.bombs.GBU_28", "weapons.missiles.AGM_65F", "weapons.missiles.X_59M" }
 years[1992] = {
     "weapons.missiles.BK90_MJ1",
@@ -200,10 +228,13 @@ years[1992] = {
 }
 years[1993] = { "weapons.missiles.AGM_114K" }
 years[1994] = { "weapons.missiles.AIM_120", "weapons.missiles.P_77", "weapons.missiles.PL-8A" }
+
+-- NOTE: GPS is disabled by DCS at any date prior to 28th March 1994.
+
 years[1995] = { "weapons.missiles.AGM_114" }
 years[1996] = { "weapons.missiles.AIM_120C", "weapons.bombs.GBU_27", "weapons.missiles.MICA_R", "weapons.missiles.MICA_T", "weapons.containers.{F14-LANTIRN-TP}" }
 years[1997] = { "weapons.bombs.CBU_103" }
-years[1998] = { "weapons.missiles.AGM_154A", "weapons.bombs.CBU_97", "weapons.bombs.CBU_105" }
+years[1998] = { "weapons.missiles.AGM_154A", "weapons.bombs.CBU_97", "weapons.bombs.CBU_105", "weapons.containers.ah-64d_radar" }
 years[1999] = {
     "weapons.containers.aaq-28LEFT litening",
     "weapons.containers.F-15E_AAQ-28_LITENING",
@@ -214,7 +245,7 @@ years[1999] = {
     "weapons.bombs.GBU_31_V_4B",
     "weapons.bombs.GBU_32_V_2B",
     "weapons.containers.Litening III Targeting Pod",
-    {4,15,44,101}, -- Harrier and A-10 Litening Pod as at 2.8.8
+    {4,15,44,101}, -- Harrier, F/A-18, F-16 and A-10 Litening Pod as at 2.8.8
     "weapons.bombs.GBU_38"
 }
 
@@ -232,9 +263,9 @@ As far as I can tell there's no string name that refers to it, but the Warehouse
 ]]
 
 years[2000] = { "weapons.missiles.AGM_84H" }
-years[2002] = { "weapons.containers.AN_ASQ_228" }
-years[2003] = { "weapons.missiles.AIM_9X" }
-years[2005] = { "weapons.missiles.AGM_154", "weapons.missiles.AGM_154B", "weapons.missiles.PL-12", "weapons.missiles.X_35" }
+years[2002] = { "weapons.containers.AN_ASQ_228", "weapons.missiles.C-701IR", {4,4,8,416} } -- C-701T.
+years[2003] = { "weapons.missiles.AIM_9X", {4,4,7,438} } -- AIM9X (not AIM-9X)
+years[2005] = { "weapons.missiles.AGM_154", "weapons.missiles.AGM_154B", {4,4,7,307}, "weapons.missiles.X_35" } -- SD-10A
 years[2006] = { "weapons.missiles.LS-6-250", "weapons.missiles.LS-6-500", "weapons.bombs.LS-6-100", "weapons.missiles.C-802AK", "weapons.missiles.C_802AK", "weapons.containers.16c_hts_pod" }
 years[2007] = { "weapons.missiles.AGM_65H", "weapons.missiles.AGM_65K" }
 years[2008] = { "weapons.missiles.PL-5EII", "weapons.containers.pl5eii" }
@@ -246,332 +277,13 @@ years[2012] = { "weapons.bombs.GBU_54_V_1B",
                 "weapons.missiles.GB-6-HE",
                 "weapons.missiles.CM-802AKG_AI",
                 "weapons.missiles.CM_802AKG",
-                "weapons.missiles.CM-802AKG",
                 "weapons.missiles.LD-10" }
-years[2014] = { "weapons.missiles.mar1" }
+years[2013] = { {4,15,44,463} } -- JF-17 AVIC WMD-7 TPOD
+years[2014] = { "weapons.missiles.mar1", "weapons.missiles.BRM-1_90MM" }
 years[2015] = { "weapons.missiles.AGR_20A", "weapons.missiles.AGR_20_M282" }
 years[2022] = { "weapons.missiles.A-Darter IR AAM" }
 
-
--- Commenting out airports to check the automatic collection of airbases works.
-
---[[
-
-local basesCaucasus = {
-    [12] = "Anapa-Vityazevo",
-    [13] = "Krasnodar-Center",
-    [14] = "Novorossiysk",
-    [15] = "Krymsk",
-    [16] = "Maykop-Khanskaya",
-    [17] = "Gelendzhik",
-    [18] = "Sochi-Adler",
-    [19] = "Krasnodar-Pashkovsky",
-    [20] = "Sukhumi-Babushara",
-    [21] = "Gudauta",
-    [22] = "Batumi",
-    [23] = "Senaki-Kolkhi",
-    [24] = "Kobuleti",
-    [25] = "Kutaisi",
-    [26] = "Mineralnye Vody",
-    [27] = "Nalchik",
-    [28] = "Mozdok",
-    [29] = "Tbilisi-Lochini",
-    [30] = "Soganlug",
-    [31] = "Vaziani",
-    [32] = "Beslan"
-}
-
-local basesNTTR = {
-    [1] = "Creech AFB",
-    [2] = "Groom Lake AFB",
-    [3] = "McCarran International Airport",
-    [4] = "Nellis AFB",
-    [5] = "Beatty Airport",
-    [6] = "Boulder City Airport",
-    [7] = "Echo Bay",
-    [8] = "Henderson Executive Airport",
-    [9] = "Jean Airport",
-    [10] = "Laughlin Airport",
-    [11] = "Lincoln County",
-    [13] = "Mesquite",
-    [14] = "Mina Airport 3Q0",
-    [15] = "North Las Vegas",
-    [16] = "Pahute Mesa Airstrip",
-    [17] = "Tonopah Airport",
-    [18] = "Tonopah Test Range Airfield"
-}
-
-local basesNormandy = {
-    [1] = "Saint Pierre du Mont",
-    [2] = "Lignerolles",
-    [3] = "Cretteville",
-    [4] = "Maupertus",
-    [5] = "Brucheville",
-    [6] = "Meautis",
-    [7] = "Cricqueville-en-Bessin",
-    [8] = "Lessay",
-    [9] = "Sainte-Laurent-sur-Mer",
-    [10] = "Biniville",
-    [11] = "Cardonville",
-    [12] = "Deux Jumeaux",
-    [13] = "Chippelle",
-    [14] = "Beuzeville",
-    [15] = "Azeville",
-    [16] = "Picauville",
-    [17] = "Le Molay",
-    [18] = "Longues-sur-Mer",
-    [19] = "Carpiquet",
-    [20] = "Bazenville",
-    [21] = "Sainte-Croix-sur-Mer",
-    [22] = "Beny-sur-Mer",
-    [23] = "Rucqueville",
-    [24] = "Sommervieu",
-    [25] = "Lantheuil",
-    [26] = "Evreux",
-    [27] = "Chailey",
-    [28] = "Needs Oar Point",
-    [29] = "Funtington",
-    [30] = "Tangmere",
-    [31] = "Ford",
-    [32] = "Argentan",
-    [33] = "Goulet",
-    [34] = "Barville",
-    [35] = "Essay",
-    [36] = "Hauterive",
-    [37] = "Lymington",
-    [38] = "Vrigny",
-    [39] = "Odiham",
-    [40] = "Conches",
-    [41] = "West Malling",
-    [42] = "Villacoublay",
-    [43] = "Kenley",
-    [44] = "Beauvais-Tille",
-    [45] = "Cormeilles-en-Vexin",
-    [46] = "Creil",
-    [47] = "Guyancourt",
-    [48] = "Lonrai",
-    [49] = "Dinan-Trelivan",
-    [50] = "Heathrow",
-    [51] = "Fecamp-Benouville",
-    [52] = "Farnborough",
-    [53] = "Friston",
-    [54] = "Deanland",
-    [55] = "Triqueville",
-    [56] = "Poix",
-    [57] = "Orly",
-    [58] = "Stoney Cross",
-    [59] = "Amiens-Glisy",
-    [60] = "Ronai",
-    [61] = "Rouen-Boos",
-    [62] = "Deauville",
-    [63] = "Saint-Aubin",
-    [64] = "Flers",
-    [65] = "Avranches Le Val-Saint-Pere",
-    [66] = "Gravesend",
-    [67] = "Beaumont-le-Roger",
-    [68] = "Broglie",
-    [69] = "Bernay Saint Martin",
-    [70] = "Saint-Andre-de-lEure"
-}
-
-local basesPG = {
-    [1] = "Abu Musa Island",
-    [2] = "Bandar Abbas Intl",
-    [3] = "Bandar Lengeh",
-    [4] = "Al Dhafra AFB",
-    [5] = "Dubai Intl",
-    [6] = "Al Maktoum Intl",
-    [7] = "Fujairah Intl",
-    [8] = "Tunb Island AFB",
-    [9] = "Havadarya",
-    [10] = "Khasab",
-    [11] = "Lar",
-    [12] = "Al Minhad AFB",
-    [13] = "Qeshm Island",
-    [14] = "Sharjah Intl",
-    [15] = "Sirri Island",
-    [16] = "Tunb Kochak",
-    [17] = "Sir Abu Nuayr",
-    [18] = "Kerman",
-    [19] = "Shiraz Intl",
-    [20] = "Sas Al Nakheel",
-    [21] = "Bandar-e-Jask",
-    [22] = "Abu Dhabi Intl",
-    [23] = "Al-Bateen",
-    [24] = "Kish Intl",
-    [25] = "Al Ain Intl",
-    [26] = "Lavan Island",
-    [27] = "Jiroft",
-    [28] = "Ras Al Khaimah Intl",
-    [29] = "Liwa AFB"
-}
-
-local basesChannel = {
-    [1] = "Abbeville Drucat",
-    [2] = "Merville Calonne",
-    [3] = "Saint Omer Longuenesse",
-    [4] = "Dunkirk Mardyck",
-    [5] = "Manston",
-    [6] = "Hawkinge",
-    [7] = "Lympne",
-    [8] = "Detling",
-    [12] = "High Halden"
-}
-
-local basesSyria = {
-    [1] = "Abu al-Duhur",
-    [2] = "Adana Sakirpasa",
-    [3] = "Al Qusayr",
-    [4] = "An Nasiriyah",
-    [5] = "Tha'lah",
-    [6] = "Beirut-Rafic Hariri",
-    [7] = "Damascus",
-    [8] = "Marj as Sultan South",
-    [9] = "Al-Dumayr",
-    [10] = "Eyn Shemer",
-    [11] = "Gaziantep",
-    [12] = "H4",
-    [13] = "Haifa",
-    [14] = "Hama",
-    [15] = "Hatay",
-    [16] = "Incirlik",
-    [17] = "Jirah",
-    [18] = "Khalkhalah",
-    [19] = "King Hussein Air College",
-    [20] = "Kiryat Shmona",
-    [21] = "Bassel Al-Assad",
-    [22] = "Marj as Sultan North",
-    [23] = "Marj Ruhayyil",
-    [24] = "Megiddo",
-    [25] = "Mezzeh",
-    [26] = "Minakh",
-    [27] = "Aleppo",
-    [28] = "Palmyra",
-    [29] = "Qabr as Sitt",
-    [30] = "Ramat David",
-    [31] = "Kuweires",
-    [32] = "Rayak",
-    [33] = "Rene Mouawad",
-    [34] = "Rosh Pina",
-    [35] = "Sayqal",
-    [36] = "Shayrat",
-    [37] = "Tabqa",
-    [38] = "Taftanaz",
-    [39] = "Tiyas",
-    [40] = "Wujah Al Hajar",
-    [41] = "Gazipasa",
-    [42] = "Deir ez-Zor",
-    [43] = "Nicosia",
-    [44] = "Akrotiri",
-    [45] = "Kingsfield",
-    [46] = "Paphos",
-    [47] = "Larnaca",
-    [48] = "Lakatamia",
-    [49] = "Ercan",
-    [50] = "Gecitkale",
-    [51] = "Pinarbashi",
-    [52] = "Naqoura",
-    [53] = "H3",
-    [54] = "H3 Northwest",
-    [55] = "H3 Southwest",
-    [57] = "Ruwayshid",
-    [58] = "Sanliurfa",
-    [59] = "Kharab Ishk",
-    [60] = "Tal Siman",
-    [61] = "Raj al Issa East",
-    [62] = "Raj al Issa West",
-    [63] = "At Tanf"
-}
-
-local basesMarianas = {
-    [1] = "Rota Intl",
-    [2] = "Saipan Intl",
-    [3] = "Tinian Intl",
-    [4] = "Antonio B. Won Pat Intl",
-    [5] = "Olf Orote",
-    [6] = "Andersen AFB",
-    [7] = "Pagan Airstrip",
-    [8] = "North West Field",
-}
-
-local basesSA = {
-    [1] = "Port Stanley",
-    [2] = "Mount Pleasant",
-    [3] = "San Carlos FOB",
-    [5] = "Rio Gallegos",
-    [6] = "Rio Grande",
-    [7] = "Ushuaia",
-    [8] = "Ushuaia Helo Port",
-    [9] = "Punta Arenas",
-    [10] = "Pampa Guanaco",
-    [11] = "San Julian",
-    [12] = "Puerto Williams",
-    [13] = "Puerto Natales",
-    [14] = "El Calafate",
-    [15] = "Puerto Santa Cruz",
-    [16] = "Comandante Luis Piedrabuena",
-    [17] = "Aerodromo De Tolhuin",
-    [18] = "Porvenir Airfield",
-    [19] = "Almirante Schroeders",
-    [20] = "Rio Turbio",
-    [21] = "Rio Chico",
-    [22] = "Caleta Tortel",
-    [23] = "Franco Bianco",
-    [24] = "Goose Green",
-    [25] = "Hipico Flying Club",
-    [26] = "Aeropuerto de Gobernador Gregores",
-    [27] = "Aerodromo O'Higgins",
-    [28] = "Cullen Airport",
-    [29] = "Gull Point",
-}
-
-local basesSinai = {
-    [1] = "Difarsuwar Airfield",
-    [2] = "Abu Suwayr",
-    [3] = "As Salihiyah",
-    [4] = "Al Ismailiyah",
-    [5] = "Melez",
-    [6] = "Fayed",
-    [7] = "Hatzerim",
-    [8] = "Nevatim",
-    [9] = "Ramon Airbase",
-    [10] = "Ovda",
-    [11] = "Kibrit Air Base",
-    [12] = "Kedem",
-    [13] = "Wadi al Jandali",
-    [14] = "Al Mansurah",
-    [15] = "AzZaqaziq",
-    [16] = "Bilbeis Air Base",
-    [17] = "Cairo International Airport",
-    [18] = "Cairo West",
-    [19] = "Inshas Airbase",
-    [20] = "Hatzor",
-    [21] = "Palmahim",
-    [22] = "Sde Dov",
-    [23] = "Tel Nof",
-    [24] = "Ben-Gurion",
-    [25] = "St Catherine",
-    [26] = "Abu Rudeis",
-    [27] = "Baluza",
-    [28] = "Bir Hasanah",
-    [29] = "El Arish",
-    [30] = "El Gora",
-}
-
--- Define airbases in different regions.
-local airbaseTables = {
-    basesCaucasus,
-    basesNTTR,
-    basesNormandy,
-    basesPG,
-    basesChannel,
-    basesSyria,
-    basesMarianas,
-    basesSA,
-    basesSinai
-}
-
-]]
+-- Original function (deprecated).
 
 --[[function restrictWeps(yearToCheck, years)
     local airbases = world.getAirbases()
